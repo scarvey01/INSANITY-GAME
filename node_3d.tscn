@@ -1,10 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://ckv8q5jyvif6r"]
+[gd_scene load_steps=17 format=3 uid="uid://ckv8q5jyvif6r"]
 
 [ext_resource type="Script" uid="uid://d22putd88mkgd" path="res://character_body_3d.gd" id="1_a202f"]
 [ext_resource type="Texture2D" uid="uid://c5wkkcf3pnd67" path="res://sand.png" id="1_jka67"]
 [ext_resource type="Script" uid="uid://cgwuyl7nlyn17" path="res://map.gd" id="1_r3fl7"]
 [ext_resource type="PackedScene" uid="uid://dijw22lyuegl0" path="res://side_mirror.tscn" id="2_a0tk4"]
-[ext_resource type="Shader" path="res://node_3d.gdshader" id="2_i5arm"]
 [ext_resource type="Texture2D" uid="uid://bqn77wfwabr1x" path="res://bus-view.png" id="2_noarx"]
 [ext_resource type="PackedScene" path="res://bus_mirror.tscn" id="3_r3fl7"]
 
@@ -18,6 +17,7 @@ noise = SubResource("FastNoiseLite_a0tk4")
 albedo_texture = ExtResource("1_jka67")
 normal_enabled = true
 normal_texture = SubResource("NoiseTexture2D_r3fl7")
+texture_filter = 2
 proximity_fade_distance = 0.01
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_4xowi"]
@@ -25,13 +25,6 @@ material = SubResource("StandardMaterial3D_jka67")
 size = Vector2(100, 100)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_a202f"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wc5p8"]
-render_priority = 0
-shader = ExtResource("2_i5arm")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_jsk3o"]
-material = SubResource("ShaderMaterial_wc5p8")
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_noarx"]
 energy_multiplier = 0.1
@@ -60,9 +53,6 @@ mesh = SubResource("PlaneMesh_4xowi")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0609679, 0, 0.0119629)
 shape = SubResource("WorldBoundaryShape3D_a202f")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="StaticBody3D"]
-mesh = SubResource("PlaneMesh_jsk3o")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_r3fl7")
