@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ckv8q5jyvif6r"]
+[gd_scene load_steps=18 format=3 uid="uid://ckv8q5jyvif6r"]
 
 [ext_resource type="Script" uid="uid://d22putd88mkgd" path="res://character_body_3d.gd" id="1_a202f"]
 [ext_resource type="Texture2D" uid="uid://c5wkkcf3pnd67" path="res://sand.png" id="1_jka67"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dijw22lyuegl0" path="res://side_mirror.tscn" id="2_a0tk4"]
 [ext_resource type="Texture2D" uid="uid://bqn77wfwabr1x" path="res://bus-view.png" id="2_noarx"]
 [ext_resource type="PackedScene" uid="uid://icmiyyrstb5d" path="res://bus_mirror.tscn" id="3_r3fl7"]
+[ext_resource type="Script" uid="uid://6v45d0uwvatw" path="res://camera_3d.gd" id="4_wc5p8"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_a0tk4"]
 
@@ -69,6 +70,7 @@ mesh = SubResource("CapsuleMesh_a0tk4")
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.540192, 0)
+script = ExtResource("4_wc5p8")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="CharacterBody3D/Camera3D"]
 
