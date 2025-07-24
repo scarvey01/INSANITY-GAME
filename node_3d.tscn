@@ -2,6 +2,10 @@
 
 [ext_resource type="Script" uid="uid://d22putd88mkgd" path="res://character_body_3d.gd" id="1_a202f"]
 [ext_resource type="Texture2D" uid="uid://c5wkkcf3pnd67" path="res://sand.png" id="1_jka67"]
+
+[ext_resource type="Script" uid="uid://d22putd88mkgd" path="res://character_body_3d.gd" id="1_a202f"]
+[ext_resource type="Script" uid="uid://cgwuyl7nlyn17" path="res://map.gd" id="1_r3fl7"]
+
 [ext_resource type="PackedScene" uid="uid://dijw22lyuegl0" path="res://side_mirror.tscn" id="2_a0tk4"]
 [ext_resource type="Shader" uid="uid://byhr8tvtq2e4m" path="res://node_3d.gdshader" id="2_i5arm"]
 [ext_resource type="Texture2D" uid="uid://bqn77wfwabr1x" path="res://bus-view.png" id="2_noarx"]
@@ -51,11 +55,13 @@ sky = SubResource("Sky_a0tk4")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+script = ExtResource("1_r3fl7")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 mesh = SubResource("PlaneMesh_4xowi")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0609679, 0, 0.0119629)
 shape = SubResource("WorldBoundaryShape3D_a202f")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="StaticBody3D"]
