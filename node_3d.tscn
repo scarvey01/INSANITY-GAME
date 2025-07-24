@@ -1,15 +1,12 @@
-[gd_scene load_steps=19 format=3 uid="uid://ckv8q5jyvif6r"]
+[gd_scene load_steps=20 format=3 uid="uid://ckv8q5jyvif6r"]
 
 [ext_resource type="Script" uid="uid://d22putd88mkgd" path="res://character_body_3d.gd" id="1_a202f"]
 [ext_resource type="Texture2D" uid="uid://c5wkkcf3pnd67" path="res://sand.png" id="1_jka67"]
-
-[ext_resource type="Script" uid="uid://d22putd88mkgd" path="res://character_body_3d.gd" id="1_a202f"]
 [ext_resource type="Script" uid="uid://cgwuyl7nlyn17" path="res://map.gd" id="1_r3fl7"]
-
 [ext_resource type="PackedScene" uid="uid://dijw22lyuegl0" path="res://side_mirror.tscn" id="2_a0tk4"]
-[ext_resource type="Shader" uid="uid://byhr8tvtq2e4m" path="res://node_3d.gdshader" id="2_i5arm"]
+[ext_resource type="Shader" path="res://node_3d.gdshader" id="2_i5arm"]
 [ext_resource type="Texture2D" uid="uid://bqn77wfwabr1x" path="res://bus-view.png" id="2_noarx"]
-[ext_resource type="PackedScene" uid="uid://icmiyyrstb5d" path="res://bus_mirror.tscn" id="3_r3fl7"]
+[ext_resource type="PackedScene" path="res://bus_mirror.tscn" id="3_r3fl7"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_a0tk4"]
 

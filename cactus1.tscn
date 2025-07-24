@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://872jta5g1dtw"]
+
+[ext_resource type="PackedScene" uid="uid://boy6liitpbp7w" path="res://Cactus1.fbx" id="1_lew2f"]
+[ext_resource type="Texture2D" uid="uid://dmwkfd6uhump3" path="res://cactus_texture.jpg" id="2_6xrq3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_arctj"]
+albedo_texture = ExtResource("2_6xrq3")
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 2
+
+[node name="Cactus1" instance=ExtResource("1_lew2f")]
+
+[node name="Cylinder" parent="." index="0"]
+transform = Transform3D(20, 0, 0, 0, -8.74228e-07, 20, 0, -20, -8.74228e-07, 0.00024724, 0.0065397, -0.00135565)
+surface_material_override/0 = SubResource("StandardMaterial3D_arctj")
