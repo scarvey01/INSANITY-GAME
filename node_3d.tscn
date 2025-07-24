@@ -1,0 +1,77 @@
+[gd_scene load_steps=15 format=3 uid="uid://ckv8q5jyvif6r"]
+
+[ext_resource type="Script" uid="uid://d22putd88mkgd" path="res://character_body_3d.gd" id="1_a202f"]
+[ext_resource type="PackedScene" uid="uid://dijw22lyuegl0" path="res://side_mirror.tscn" id="2_a0tk4"]
+[ext_resource type="Texture2D" uid="uid://bqn77wfwabr1x" path="res://bus-view.png" id="2_noarx"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_a0tk4"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_a0tk4"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_r3fl7"]
+noise = SubResource("FastNoiseLite_a0tk4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jka67"]
+albedo_texture = SubResource("NoiseTexture2D_a0tk4")
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_r3fl7")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4xowi"]
+material = SubResource("StandardMaterial3D_jka67")
+size = Vector2(100, 100)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_a202f"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_noarx"]
+
+[sub_resource type="Sky" id="Sky_a0tk4"]
+sky_material = SubResource("ProceduralSkyMaterial_noarx")
+
+[sub_resource type="Environment" id="Environment_r3fl7"]
+background_mode = 2
+sky = SubResource("Sky_a0tk4")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_noarx"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_a0tk4"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("PlaneMesh_4xowi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_a202f")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_r3fl7")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05923, 0)
+script = ExtResource("1_a202f")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_noarx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+mesh = SubResource("CapsuleMesh_a0tk4")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.540192, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CharacterBody3D/Camera3D"]
+
+[node name="SideMirror2" parent="CharacterBody3D" instance=ExtResource("2_a0tk4")]
+transform = Transform3D(1, 4.84288e-08, 2.40747e-07, -1.93715e-07, 0.999999, -4.47035e-08, 1.96975e-07, -5.96046e-08, 1, -2, 0.239999, -1.7)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_right = 854.0
+offset_bottom = 480.0
+texture = ExtResource("2_noarx")
+expand_mode = 1

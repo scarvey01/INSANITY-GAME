@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dijw22lyuegl0"]
+
+[ext_resource type="PackedScene" uid="uid://c1m1n0xhpe3hw" path="res://SideMirror.fbx" id="1_bvlq4"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_bvlq4"]
+viewport_path = NodePath("SideMirror/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b6xtm"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_bvlq4")
+
+[node name="SideMirror" instance=ExtResource("1_bvlq4")]
+
+[node name="SideMirror" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_b6xtm")
+
+[node name="SubViewport" type="SubViewport" parent="SideMirror" index="0"]
+
+[node name="Camera3D" type="Camera3D" parent="SideMirror/SubViewport" index="0"]
+transform = Transform3D(-86.8628, 6.33027, 1.92071, 2.51797, 108.199, -15.2592, -3.94634, -6.22314, -87.1329, -0.314069, 1.49012e-08, -0.429748)
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="SideMirror" index="1"]
+transform = Transform3D(-0.69401, 0.139046, 0.706411, -0.0617393, 0.966065, -0.250811, -0.717313, -0.217679, -0.661874, 0.000803931, -0.000857665, -0.00594885)
+remote_path = NodePath("../SubViewport/Camera3D")
