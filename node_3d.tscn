@@ -1,20 +1,23 @@
-[gd_scene load_steps=15 format=3 uid="uid://ckv8q5jyvif6r"]
+[gd_scene load_steps=19 format=3 uid="uid://ckv8q5jyvif6r"]
 
 [ext_resource type="Script" uid="uid://d22putd88mkgd" path="res://character_body_3d.gd" id="1_a202f"]
+[ext_resource type="Texture2D" uid="uid://c5wkkcf3pnd67" path="res://sand.png" id="1_jka67"]
 [ext_resource type="PackedScene" uid="uid://dijw22lyuegl0" path="res://side_mirror.tscn" id="2_a0tk4"]
+[ext_resource type="Shader" uid="uid://byhr8tvtq2e4m" path="res://node_3d.gdshader" id="2_i5arm"]
 [ext_resource type="Texture2D" uid="uid://bqn77wfwabr1x" path="res://bus-view.png" id="2_noarx"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_a0tk4"]
+[ext_resource type="PackedScene" uid="uid://icmiyyrstb5d" path="res://bus_mirror.tscn" id="3_r3fl7"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_a0tk4"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_r3fl7"]
+as_normal_map = true
 noise = SubResource("FastNoiseLite_a0tk4")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jka67"]
-albedo_texture = SubResource("NoiseTexture2D_a0tk4")
+albedo_texture = ExtResource("1_jka67")
 normal_enabled = true
 normal_texture = SubResource("NoiseTexture2D_r3fl7")
+proximity_fade_distance = 0.01
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_4xowi"]
 material = SubResource("StandardMaterial3D_jka67")
@@ -22,7 +25,15 @@ size = Vector2(100, 100)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_a202f"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wc5p8"]
+render_priority = 0
+shader = ExtResource("2_i5arm")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jsk3o"]
+material = SubResource("ShaderMaterial_wc5p8")
+
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_noarx"]
+energy_multiplier = 0.1
 
 [sub_resource type="Sky" id="Sky_a0tk4"]
 sky_material = SubResource("ProceduralSkyMaterial_noarx")
@@ -47,6 +58,9 @@ mesh = SubResource("PlaneMesh_4xowi")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("WorldBoundaryShape3D_a202f")
 
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("PlaneMesh_jsk3o")
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_r3fl7")
 
@@ -66,7 +80,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.540192, 0)
 [node name="OmniLight3D" type="OmniLight3D" parent="CharacterBody3D/Camera3D"]
 
 [node name="SideMirror2" parent="CharacterBody3D" instance=ExtResource("2_a0tk4")]
-transform = Transform3D(1, 4.84288e-08, 2.40747e-07, -1.93715e-07, 0.999999, -4.47035e-08, 1.96975e-07, -5.96046e-08, 1, -2, 0.239999, -1.7)
+transform = Transform3D(1, 4.84288e-08, 2.40747e-07, -1.93715e-07, 0.999999, -4.47035e-08, 1.96975e-07, -5.96046e-08, 1, -2.2, 0.24, -1.95)
+
+[node name="BusMirror" parent="CharacterBody3D" instance=ExtResource("3_r3fl7")]
+transform = Transform3D(1, 0, 0, 0, -0.173786, -0.984784, 0, 0.984784, -0.173786, 0, 1.48607, -1.98241)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.34439, 0.640206, 0)
+spot_range = 40.0
+spot_attenuation = 0.25
+spot_angle = 50.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

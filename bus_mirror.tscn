@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://icmiyyrstb5d"]
+
+[ext_resource type="PackedScene" uid="uid://bxttlvv67syq3" path="res://BusMirror.fbx" id="1_5oryb"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_5oryb"]
+viewport_path = NodePath("BusMirror/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nh1rn"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_5oryb")
+roughness = 0.0
+
+[node name="BusMirror" instance=ExtResource("1_5oryb")]
+
+[node name="BusMirror" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_nh1rn")
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="BusMirror" index="0"]
+transform = Transform3D(-0.979196, -0.0544242, 0.195478, -0.019472, 0.984116, 0.176454, -0.201976, 0.168977, -0.964703, 0.00109872, 0.00121856, -0.00682437)
+remote_path = NodePath("../SubViewport/Camera3D")
+
+[node name="SubViewport" type="SubViewport" parent="BusMirror" index="1"]
+size = Vector2i(128, 128)
+
+[node name="Camera3D" type="Camera3D" parent="BusMirror/SubViewport" index="0"]
+transform = Transform3D(-107.258, 5.16405, 4.27357, -4.26826, 0.210573, -107.382, -5.16838, -107.342, -0.00505257, 0.140302, 0.0799443, -5.21541e-08)
+fov = 118.125
+
+[node name="Camera" parent="." index="1"]
+visible = false
+
+[node name="Light" parent="." index="2"]
+visible = false

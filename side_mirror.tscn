@@ -15,6 +15,7 @@ albedo_texture = SubResource("ViewportTexture_bvlq4")
 surface_material_override/0 = SubResource("StandardMaterial3D_b6xtm")
 
 [node name="SubViewport" type="SubViewport" parent="SideMirror" index="0"]
+size = Vector2i(128, 128)
 
 [node name="Camera3D" type="Camera3D" parent="SideMirror/SubViewport" index="0"]
 transform = Transform3D(-86.8628, 6.33027, 1.92071, 2.51797, 108.199, -15.2592, -3.94634, -6.22314, -87.1329, -0.314069, 1.49012e-08, -0.429748)
